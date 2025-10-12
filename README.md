@@ -1,4 +1,4 @@
-# ✂️ Rock-Paper-Scissors Game (C++)
+Rock-Paper-Scissors Game 
 
 A **console-based Rock-Paper-Scissors game** written in C++ where you can challenge the computer in multiple rounds.  
 This project is a fun way to practice **C++ programming**, including **enums, structs, functions, loops, and random number generation**.
@@ -43,11 +43,3 @@ This project is a fun way to practice **C++ programming**, including **enums, st
 
 ---
 
-## 🧩 Code Structure
-
-```text
-📁 Rock-Paper-Scissors/
-│
-├── main.cpp          # The main source file
-├── README.md         # Project documentation
-└── LICENSE           # Optional

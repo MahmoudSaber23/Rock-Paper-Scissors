@@ -213,7 +213,7 @@ void StartGame()
 {
     char PlayAgain = 'Y';
     cout << "\n========================================\n";
-    cout << "     WELCOME TO MATH QUIZ GAME!        \n";
+    cout << "   WELCOME TO Rook-Paper-Scissors GAME!        \n";
     cout << "========================================\n";
 
     do

@@ -212,9 +212,6 @@ void ResetScreen()
 void StartGame()
 {
     char PlayAgain = 'Y';
-    cout << "\n========================================\n";
-    cout << "   WELCOME TO Rook-Paper-Scissors GAME!        \n";
-    cout << "========================================\n";
 
     do
     {
@@ -227,7 +224,7 @@ void StartGame()
         cout <<endl<< Tabs(3) << "Do You Want To Play Again? Y/N? ";
         cin >> PlayAgain;
     } while (PlayAgain == 'Y' || PlayAgain == 'y');
-    cout << "\nThank you for playing! Goodbye!\n";
+   
 }
 
 

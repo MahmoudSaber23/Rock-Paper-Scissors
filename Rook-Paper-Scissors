@@ -25,7 +25,7 @@ struct stGameResults
     string WinnerName = "";
 };
 
-short RandomNumber(int From, int To)
+short RandomNumber(short From, short To)
 {
     return rand() % (To - From + 1) + From;
 }
@@ -225,7 +225,6 @@ void StartGame()
     } while (PlayAgain == 'Y' || PlayAgain == 'y');
 
 }
-
 
 int main()
 {

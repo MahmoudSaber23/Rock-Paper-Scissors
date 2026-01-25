@@ -1,54 +1,46 @@
-# Rock-Paper-Scissors Game (C++ Console Application)
+Rock-Paper-Scissors Game
 
-A console-based implementation of the classic Rock-Paper-Scissors game written in C++.  
-This project demonstrates basic C++ programming concepts such as enums, structs, functions, loops, input validation, and random number generation.
-
----
-
-## Table of Contents
-
-- [Features](#features)
-- [How It Works](#how-it-works)
-- [Project Structure](#project-structure)
-- [Code Overview](#code-overview)
-- [Requirements](#requirements)
-- [How to Compile and Run](#how-to-compile-and-run)
-- [Input Validation](#input-validation)
-- [Console Colors](#console-colors)
-- [Possible Improvements](#possible-improvements)
-- [Author](#author)
+A console-based Rock-Paper-Scissors game written in C++ where you can challenge the computer in multiple rounds.  
+This project is a fun way to practice C++ programming, including enums, structs, functions, loops, and random number generation.
 
 ---
 
 ## Features
 
-- Choose the number of rounds (1 to 10).
-- Player selects Rock, Paper, or Scissors.
-- Computer selects a random choice.
-- Round results are displayed immediately.
-- Game results summary after all rounds.
-- Tracks:
+- Choose the number of rounds (1–10).
+- Select your move each round:
+  - Rock
+  - Paper
+  - Scissors
+
+- Computer chooses randomly each round.
+- Real-time results for each round (who won).
+- Keeps track of:
   - Player wins
   - Computer wins
   - Draws
-- Final winner is determined based on total wins.
-- Option to play again.
-- Colored console output for quick feedback.
+
+- Final game results with the overall winner.
+- Colored console output for feedback:
+  - Green for player win
+  - Red for computer win
+  - Yellow for draw
+
+- Option to play again after each game.
 
 ---
 
 ## How It Works
 
-1. The game asks the user how many rounds to play (1 to 10).
+1. The game asks how many rounds you want to play.
 2. For each round:
-   - Player selects a choice (1 for Rock, 2 for Paper, 3 for Scissors).
-   - Computer generates a random choice.
-   - The winner of the round is determined.
-   - The round results are displayed.
-3. After all rounds:
-   - Game summary is displayed.
-   - Final winner is declared.
-   - Player can choose to play again.
+   - You choose Rock, Paper, or Scissors.
+   - The computer randomly selects its move.
+   - The winner is determined and shown immediately.
+3. At the end of all rounds:
+   - Total scores are displayed.
+   - The final winner is announced.
+   - Option to play again.
 
 ---
 

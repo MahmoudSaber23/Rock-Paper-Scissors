@@ -1,6 +1,6 @@
-Rock-Paper-Scissors Game 
+# Rock-Paper-Scissors Game 🎮
 
-A **console-based Rock-Paper-Scissors game** written in C++ where you can challenge the computer in multiple rounds.  
+A **console-based Rock-Paper-Scissors game** written in **C++**, where you can challenge the computer in multiple rounds.  
 This project is a fun way to practice **C++ programming**, including **enums, structs, functions, loops, and random number generation**.
 
 ---
@@ -22,9 +22,10 @@ This project is a fun way to practice **C++ programming**, including **enums, st
 
 ✅ Final game results with the overall winner.  
 ✅ Colored console output for feedback:  
-- Green for player win  
-- Red for computer win  
-- Yellow for draw  
+- 🟢 Green for player win  
+- 🔴 Red for computer win  
+- 🟡 Yellow for draw  
+
 ✅ Option to play again after each game.
 
 ---
@@ -42,4 +43,6 @@ This project is a fun way to practice **C++ programming**, including **enums, st
    - Option to play again.
 
 ---
+
+## 🧩 Project Structure
 

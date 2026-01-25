@@ -44,5 +44,14 @@ This project is a fun way to practice C++ programming, including enums, structs,
 
 ---
 
-## Project Structure
+## Input Validation
 
+- The game validates all user inputs to prevent invalid entries.
+- If the user enters a non-numeric value, the game clears the input buffer and asks again.
+- If the user enters a number outside the allowed range, the game asks again.
+- Validation is applied for:
+  - Number of rounds (must be between 1 and 10)
+  - Player choice (must be 1, 2, or 3)
+  - Play again choice (must be Y or N)
+
+---

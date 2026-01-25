@@ -1,9 +1,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 using namespace std;
 
-enum enGameChoice { Rook = 1, Paper, Scissors };
+enum enGameChoice { Rock = 1, Paper, Scissors };
+
 enum enWinner { Player = 1, Computer, Draw };
 
 struct stRoundsInfo
@@ -32,7 +34,7 @@ short RandomNumber(short From, short To)
 
 string ChoiceName(enGameChoice Choice)
 {
-    string arrGameChoice[3] = { "Rook", "Paper", "Scissors" };
+    string arrGameChoice[3] = { "Rock", "Paper", "Scissors" };
     return arrGameChoice[Choice - 1];
 }
 
@@ -48,7 +50,7 @@ enWinner WhoWonTheRound(stRoundsInfo RoundInfo)
         return enWinner::Draw;
     switch (RoundInfo.PlayerChoice)
     {
-    case enGameChoice::Rook:
+    case enGameChoice::Rock:
         if (RoundInfo.ComputerChoice == enGameChoice::Paper)
             return enWinner::Computer;
         break;
@@ -59,7 +61,7 @@ enWinner WhoWonTheRound(stRoundsInfo RoundInfo)
         break;
 
     case enGameChoice::Scissors:
-        if (RoundInfo.ComputerChoice == enGameChoice::Rook)
+        if (RoundInfo.ComputerChoice == enGameChoice::Rock)
             return enWinner::Computer;
     }
     return enWinner::Player;
@@ -71,7 +73,6 @@ enWinner WhoWonTheGame(short PlayerWonTimes, short ComputerWonTimes)
         return enWinner::Player;
     else if (ComputerWonTimes > PlayerWonTimes)
         return enWinner::Computer;
-
     else
         return enWinner::Draw;
 }
@@ -91,9 +92,17 @@ enGameChoice ReadPlayerChoice()
     short Choice;
     do
     {
-        cout << "\nYour Choice: [1]:Rook ,[2]:Paper ,[3]:Scissors ? ";
+        cout << "\nYour Choice: [1]:Rock ,[2]:Paper ,[3]:Scissors ? ";
         cin >> Choice;
-    } while (Choice < 1 || Choice>3);
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\nInvalid Input! Please Enter a Number ?\n";
+            continue;
+        }
+    } while (Choice < 1 || Choice > 3);
 
     return enGameChoice(Choice);
 }
@@ -108,10 +117,19 @@ short HowManyRounds()
     short GameRounds = 1;
     do
     {
-        cout << "How Many Rounds (1 TO 10) ? \n";
+        cout << "\nHow Many Rounds (1 TO 10) ? ";
         cin >> GameRounds;
 
-    } while (GameRounds < 1 || GameRounds>10);
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\nInvalid Input! Please Enter a Number ?\n";
+            continue;
+        }
+
+    } while (GameRounds < 1 || GameRounds > 10);
+
     return GameRounds;
 }
 
@@ -142,18 +160,6 @@ void PrintRoundResults(stRoundsInfo RoundInfo)
     SetWinnerScreenColor(RoundInfo.RoundWinner);
 }
 
-void PrintGameFinalResults(stGameResults GameResults)
-{
-    cout << Tabs(2) << "_________________________[Game Results]_______________________\n\n";
-    cout << Tabs(2) << "Game Rounds: " << GameResults.GameRounds << endl;
-    cout << Tabs(2) << "Player Won Times: " << GameResults.PlayerWonTimes << endl;
-    cout << Tabs(2) << "Computer Won Times: " << GameResults.ComputerWonTimes << endl;
-    cout << Tabs(2) << "Draw Times: " << GameResults.DrawTimes << endl;
-    cout << Tabs(2) << "Final Winner: " << GameResults.WinnerName << endl;
-    cout << Tabs(2) << "______________________________________________________________\n";
-    SetWinnerScreenColor(GameResults.GameWinner);
-}
-
 stGameResults FillGameResult(short GameRounds, short PlayerWonTimes, short ComputerWonTimes, short DrawTimes)
 {
     stGameResults GameResults;
@@ -166,12 +172,23 @@ stGameResults FillGameResult(short GameRounds, short PlayerWonTimes, short Compu
     return GameResults;
 }
 
+void PrintGameFinalResults(stGameResults GameResults)
+{
+    cout << Tabs(2) << "_________________________[Game Results]_______________________\n\n";
+    cout << Tabs(2) << "Game Rounds: " << GameResults.GameRounds << endl;
+    cout << Tabs(2) << "Player Won Times: " << GameResults.PlayerWonTimes << endl;
+    cout << Tabs(2) << "Computer Won Times: " << GameResults.ComputerWonTimes << endl;
+    cout << Tabs(2) << "Draw Times: " << GameResults.DrawTimes << endl;
+    cout << Tabs(2) << "Final Winner: " << GameResults.WinnerName << endl;
+    cout << Tabs(2) << "______________________________________________________________\n";
+    SetWinnerScreenColor(GameResults.GameWinner);
+}
+
 void PrintGameOverScreen()
 {
     cout << Tabs(2) << "______________________________________________________________\n\n";
     cout << Tabs(2) << "                      +++ Game Over +++" << endl;
     cout << Tabs(2) << "______________________________________________________________\n\n";
-
 }
 
 stGameResults PlayGame(short HowManyRound)
@@ -195,6 +212,7 @@ stGameResults PlayGame(short HowManyRound)
             ComputerWonTimes++;
         else
             DrawTimes++;
+
         PrintRoundResults(RoundInfo);
     }
 
@@ -205,7 +223,6 @@ void ResetScreen()
 {
     system("cls");
     system("color 0F");
-
 }
 
 void StartGame()
@@ -214,16 +231,27 @@ void StartGame()
 
     do
     {
-
         ResetScreen();
         stGameResults GameResults = PlayGame(HowManyRounds());
         PrintGameOverScreen();
         PrintGameFinalResults(GameResults);
 
-        cout << endl << Tabs(3) << "Do You Want To Play Again? Y/N? ";
-        cin >> PlayAgain;
-    } while (PlayAgain == 'Y' || PlayAgain == 'y');
+        do
+        {
+            cout << endl << Tabs(3) << "Do You Want To Play Again? Y/N? ";
+            cin >> PlayAgain;
 
+            if (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "\nInvalid Input! Please Enter Y or N ?\n";
+                continue;
+            }
+
+        } while (PlayAgain != 'Y' && PlayAgain != 'y' && PlayAgain != 'N' && PlayAgain != 'n');
+
+    } while (PlayAgain == 'Y' || PlayAgain == 'y');
 }
 
 int main()

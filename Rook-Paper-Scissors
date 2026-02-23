@@ -99,7 +99,7 @@ enGameChoice ReadPlayerChoice()
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\nInvalid Input! Please Enter a Number Between (1,3) ?\n";
+            cout << "\nInvalid Input! Please Enter a Number !\n";
             continue;
         }
     } while (Choice < 1 || Choice > 3);
@@ -124,7 +124,7 @@ short HowManyRounds()
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\nInvalid Input! Please Enter a Number Between (1,10) ?\n";
+            cout << "\nInvalid Input! Please Enter a Number !\n";
             continue;
         }
 
@@ -154,7 +154,7 @@ void PrintRoundResults(stRoundsInfo RoundInfo)
     cout << "____________________Round[" << RoundInfo.RoundNumber << "]___________________\n" << endl;
     cout << "Player Choice: " << GetGameChoiceName(RoundInfo.PlayerChoice) << endl;
     cout << "Computer Choice: " << GetGameChoiceName(RoundInfo.ComputerChoice) << endl;
-    cout << "Round Winner: [" << GetWinnerName(RoundInfo.RoundWinner)<<"] " << endl;
+    cout << "Round Winner: [" << GetWinnerName(RoundInfo.RoundWinner) << "] " << endl;
     cout << "_______________________________________________\n\n";
 
     SetWinnerScreenColor(RoundInfo.RoundWinner);
@@ -245,7 +245,7 @@ void StartGame()
             {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "\nInvalid Input! Please Enter Y or N ?\n";
+                cout << "\nInvalid Input! Please Enter Y or N !\n";
                 continue;
             }
 
